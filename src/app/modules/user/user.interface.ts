@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+import { Model } from "mongoose";
+
 export type TUserRole = 'customer' | 'admin';
 
 export type TUser = {
@@ -6,3 +9,15 @@ export type TUser = {
   password: string;
   role: TUserRole;
 };
+
+export interface UserModelType extends Model<TUser> {
+  isUserExistsByCustomId(id: string): Promise<TUser>;
+  isPasswordMatched(
+    plainTextPassword: string,
+    hashedPassword: string,
+  ): Promise<boolean>;
+  isJWTIssuedBeforePasswordChange(
+    passwordChangeTimestamp: Date,
+    jwtIssuedTimestamp: number,
+  ): boolean;
+}

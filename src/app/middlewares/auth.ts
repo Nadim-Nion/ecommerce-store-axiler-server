@@ -23,7 +23,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
     ) as JwtPayload;
 
     // Check whether the user has the permission to access the resource
-    const { userId, role, iat } = decoded;
+    const { userId, role } = decoded;
     // console.log('decoded:', decoded);
 
     // check the user is exist or not
@@ -32,34 +32,6 @@ const auth = (...requiredRoles: TUserRole[]) => {
 
     if (!user) {
       throw new AppError(httpStatus.NOT_FOUND, 'User not found');
-    }
-
-    // Check the user is deleted or not
-    const isUserDeleted = user?.isDeleted;
-
-    if (isUserDeleted) {
-      throw new AppError(
-        httpStatus.FORBIDDEN,
-        'User is deleted, please contact with admin',
-      );
-    }
-
-    // Check the user is blocked or not
-    const userStatus = user?.status;
-
-    if (userStatus === 'blocked') {
-      throw new AppError(
-        httpStatus.FORBIDDEN,
-        'User is blocked, please contact with admin',
-      );
-    }
-
-    // Check the password was changed after the JWT was issued
-    if (
-      user.passwordChangeAt &&
-      User.isJWTIssuedBeforePasswordChange(user.passwordChangeAt, iat as number)
-    ) {
-      throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized');
     }
 
     if (requiredRoles && !requiredRoles.includes(role)) {
