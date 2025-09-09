@@ -23,7 +23,10 @@ const userSchema = new Schema<TUser, UserModelType>(
     },
     role: {
       type: String,
-      enum: USER_ROLES,
+      enum: {
+        values: USER_ROLES,
+        message: `{VALUE} is not valid role`,
+      },
       default: 'customer',
     },
   },
