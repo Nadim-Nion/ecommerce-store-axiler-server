@@ -10,4 +10,6 @@ router.post(
   UserControllers.createUser,
 );
 
+router.post('/login-user', UserControllers.loginUser);
+
 export const UserRoutes = router;

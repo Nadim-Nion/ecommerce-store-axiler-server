@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Model } from "mongoose";
+import { Model } from 'mongoose';
 
 export type TUserRole = 'customer' | 'admin';
 
@@ -8,6 +8,11 @@ export type TUser = {
   email: string;
   password: string;
   role: TUserRole;
+};
+
+export type TUserLogin = {
+  email: string;
+  password: string;
 };
 
 export interface UserModelType extends Model<TUser> {
