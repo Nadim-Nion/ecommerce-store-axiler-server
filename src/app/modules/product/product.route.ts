@@ -15,4 +15,6 @@ router.get('/', ProductControllers.getAllProducts);
 
 router.get('/:productId', ProductControllers.getSingleProduct);
 
+router.patch('/:productId', ProductControllers.updateProduct)
+
 export const ProductRoutes = router;
