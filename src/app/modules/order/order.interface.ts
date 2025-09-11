@@ -10,6 +10,6 @@ export type TOrderItem = {
 export type TOrder = {
   userId: Types.ObjectId; // reference to the user
   items: TOrderItem[];
-  total: number;
+  total: number /* price * quantity */;
   status: 'pending' | 'shipped' | 'completed' | 'cancelled';
 };
