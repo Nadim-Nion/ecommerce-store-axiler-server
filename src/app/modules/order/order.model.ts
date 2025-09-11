@@ -56,11 +56,14 @@ const orderSchema = new Schema<TOrder>(
       },
       default: 'pending',
     },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
-    timestamps: true, 
+    timestamps: true,
   },
 );
-
 
 export const Order = model<TOrder>('Order', orderSchema);

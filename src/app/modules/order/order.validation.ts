@@ -29,6 +29,7 @@ const createOrderValidationSchema = z.object({
       .number({ error: 'Total price is required' })
       .min(0, 'Total cannot be negative'),
     status: z.enum(ORDER_STATUS).optional(),
+    isDeleted: z.boolean(),
   }),
 });
 

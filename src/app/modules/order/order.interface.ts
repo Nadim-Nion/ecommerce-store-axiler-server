@@ -12,4 +12,5 @@ export type TOrder = {
   items: TOrderItem[];
   total: number /* price * quantity */;
   status: 'pending' | 'shipped' | 'completed' | 'cancelled';
+  isDeleted: boolean;
 };
