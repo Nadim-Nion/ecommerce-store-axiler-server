@@ -8,6 +8,10 @@ const productSchema = new Schema<TProduct>(
       required: [true, 'Name is required'],
       trim: true,
     },
+    image: {
+      type: String,
+      required: [true, 'Image is required'],
+    },
     description: {
       type: String,
       required: [true, 'Description is required'],

@@ -6,6 +6,9 @@ export const createProductValidationSchema = z.object({
       .string({ error: 'Name is required' })
       .min(1, 'Name cannot be empty')
       .trim(),
+    image: z
+      .string({ error: 'Image is required' })
+      .min(1, 'Image can not be empty'),
     description: z
       .string({ error: 'Description is required' })
       .min(10, 'Description must be at least 10 characters long'),
