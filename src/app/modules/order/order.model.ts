@@ -62,5 +62,5 @@ const orderSchema = new Schema<TOrder>(
   },
 );
 
-// Create and export the model
+
 export const Order = model<TOrder>('Order', orderSchema);

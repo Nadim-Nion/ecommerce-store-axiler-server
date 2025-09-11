@@ -25,6 +25,7 @@ router.get(
 router.patch(
   '/:productId',
   auth(USER_ROLES_OBJ.admin),
+  validateRequest(ProductValidations.updateProductValidationSchema),
   ProductControllers.updateProduct,
 );
 
