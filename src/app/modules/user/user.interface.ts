@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { Model } from 'mongoose';
 
 export type TUserRole = 'customer' | 'admin';

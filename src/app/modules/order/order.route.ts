@@ -16,4 +16,10 @@ router.post(
 
 router.get('/', OrderControllers.getAllOrders);
 
+router.get('/:orderId',auth(USER_ROLES_OBJ.customer), OrderControllers.getSingleOrder);
+
+router.patch('/:orderId',auth(USER_ROLES_OBJ.customer), OrderControllers.updateOrder);
+
+router.delete('/:orderId', auth(USER_ROLES_OBJ.customer), OrderControllers.deleteOrder)
+
 export const OrderRoutes = router;
